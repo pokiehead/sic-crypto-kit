@@ -42,7 +42,7 @@ def _headers(key, secret, payload):
     h['api' + '-key'] = key
     return h
 
-def _req(method, path, key=None, secret=***, body='', query=''):
+def _req(method, path, key=None, secret=None, body='', query=''):
     c = http.client.HTTPSConnection(HOST, timeout=15)
     headers = _headers(key, secret, body) if key else {'Content-Type': 'application/json'}
     c.request(method, path + query, body=body.encode() if body else None, headers=headers)
@@ -53,14 +53,14 @@ def price(symbol='BTCUSDT'):
     return float(r['data'][0]['lastPrice'])
 
 def account():
-    key, secret = ***)
+    key, secret = load_creds()
     return _req('GET', '/api/v1/futures/account', key, secret)
 
 def place_order(symbol, side, trade_side, qty, leverage=40, order_type='MARKET', preset_stop_loss_price=None):
     """side: BUY/SELL, trade_side: OPEN/CLOSE.
     preset_stop_loss_price: attach a server-side stop-loss to the entry order
     (the exchange holds it even if this bot dies)."""
-    key, secret = ***)
+    key, secret = load_creds()
     o = {'symbol': symbol, 'side': side, 'tradeSide': trade_side,
          'orderType': order_type, 'qty': str(qty), 'leverage': leverage}
     if preset_stop_loss_price is not None:
