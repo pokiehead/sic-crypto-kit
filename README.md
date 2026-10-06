@@ -41,7 +41,6 @@ mercado: solo niveles, disciplina y automatizacion.
 ## Quickstart
     cp config.example ~/.config/bitunix.secret && chmod 600 ~/.config/bitunix.secret
     python3 bitunix_client.py price
-    python3 bitunix_client.py open BTCUSDT SELL OPEN 0.0057 40 88400  # entrada + SL nativo
     SYMBOL=BTCUSDT ENTRY_ABOVE=87000 ./entry_trigger.sh             # trigger de entrada
     SYMBOL=BTCUSDT ALERT_ABOVE=88000 ./sl_alert.sh                  # alerta de SL
     SYMBOL=BTCUSDT T1_BELOW=85600 T2_BELOW=85200 ./ladder_watch.sh  # salida en tiers

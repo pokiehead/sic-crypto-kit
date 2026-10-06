@@ -22,6 +22,8 @@ Automate a trading plan the operator has ALREADY decided. Never invent levels.
 - `ladder_watch.sh` - tiered exits via state machine on disk (1->2->3).
 - Both: exit 0 always, output only when they act. Cron every 5 min.
 - SL alert: separate watcher that messages the human BEFORE the liquidation zone.
+- Native SL on autopilot: entry_trigger passes SL_PCT -> presetStopLossPrice on the entry.
+  FIRE TEST first: minimal entry with SL, VERIFY the stop in the exchange UI, close.
 
 ## 3. Signing cheat-sheet
 - Bitunix: host fapi.bitunix.com; sign = sha256(sha256(nonce+ts+key+payload)+secret);
